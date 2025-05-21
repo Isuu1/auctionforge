@@ -8,7 +8,7 @@ const Header = () => {
     <header className={styles.header}>
       <h1>Auction Forge</h1>
       <nav>
-        <ul>
+        <ul className={styles.menu}>
           <li>Home</li>
           <li>Template shop</li>
           <li>Create listing</li>
