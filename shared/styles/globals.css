@@ -40,3 +40,26 @@ a {
     color-scheme: dark;
   }
 }
+
+.main-layout {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .main-layout {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-layout {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-layout {
+    width: 70%;
+  }
+}
