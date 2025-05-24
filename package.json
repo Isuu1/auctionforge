@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -35,7 +36,9 @@
     "eslint-plugin-prettier": "^5.4.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
+    "postcss": "^8.5.3",
     "prettier": "^3.5.3",
+    "tailwindcss": "^4.1.7",
     "typescript": "^5"
   }
 }
