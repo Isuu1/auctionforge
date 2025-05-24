@@ -1,17 +1,16 @@
 import React from "react";
-//Styles
-import styles from "./CallToActions.module.scss";
+//Components
 import Button from "@/shared/components/ui/Button";
 
-const CallToActions = () => {
+const CallToActions: React.FC = () => {
   return (
-    <div className={styles.callToActions}>
+    <div className="container flex flex-col gap-4 items-center justify-center text-center bg-gray-900 p-8 rounded-lg shadow-lg">
       <h1>Craft Stunning eBay Listings with Ease</h1>
       <p>
         Discover professional templates and streamline your eBay selling
         process.
       </p>
-      <div>
+      <div className="flex gap-4">
         <Button text="Browse templates" variant="primary" size="large" />
         <Button text="Create Listing" variant="secondary" size="large" />
       </div>
