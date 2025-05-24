@@ -1,6 +1,7 @@
 import React from "react";
 //Components
 import Button from "@/shared/components/ui/Button";
+import Link from "next/link";
 
 const CallToActions: React.FC = () => {
   return (
@@ -13,8 +14,12 @@ const CallToActions: React.FC = () => {
         process.
       </p>
       <div className="flex gap-4 mt-5">
-        <Button text="Browse templates" variant="primary" size="large" />
-        <Button text="Create Listing" variant="secondary" size="large" />
+        <Link href="/shop">
+          <Button text="Browse templates" variant="primary" size="large" />
+        </Link>
+        <Link href="/creator">
+          <Button text="Create Listing" variant="secondary" size="large" />
+        </Link>
       </div>
     </div>
   );
