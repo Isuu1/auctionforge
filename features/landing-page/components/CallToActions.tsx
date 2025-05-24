@@ -1,6 +1,7 @@
 import React from "react";
 //Styles
 import styles from "./CallToActions.module.scss";
+import Button from "@/shared/components/ui/Button";
 
 const CallToActions = () => {
   return (
@@ -10,7 +11,10 @@ const CallToActions = () => {
         Discover professional templates and streamline your eBay selling
         process.
       </p>
-      <div></div>
+      <div>
+        <Button text="Browse templates" />
+        <Button text="Create Listing" />
+      </div>
     </div>
   );
 };
