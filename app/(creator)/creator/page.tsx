@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div>
+    <div className="page">
       <h1>Listing creator</h1>
     </div>
   );

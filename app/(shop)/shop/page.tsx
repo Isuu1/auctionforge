@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <div>
+    <div className="page">
       <h1>Template shop</h1>
     </div>
   );
