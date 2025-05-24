@@ -45,6 +45,8 @@ a {
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -63,4 +65,9 @@ a {
   .main-layout {
     width: 70%;
   }
+}
+
+.page {
+  padding: 1rem;
+  margin-top: 150px;
 }
