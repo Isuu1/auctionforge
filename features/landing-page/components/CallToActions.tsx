@@ -12,8 +12,8 @@ const CallToActions = () => {
         process.
       </p>
       <div>
-        <Button text="Browse templates" />
-        <Button text="Create Listing" />
+        <Button text="Browse templates" variant="primary" size="large" />
+        <Button text="Create Listing" variant="secondary" size="large" />
       </div>
     </div>
   );
