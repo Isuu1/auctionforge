@@ -1,15 +1,12 @@
 import React from "react";
-
-//Styles
-import styles from "./Header.module.scss";
 import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className={styles.header}>
+    <header className="flex py-8 justify-between">
       <h1>Auction Forge</h1>
       <nav>
-        <ul className={styles.menu}>
+        <ul className="flex gap-4 list-none">
           <Link href="/" passHref>
             <li>Home</li>
           </Link>
