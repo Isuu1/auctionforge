@@ -2,6 +2,7 @@ import React from "react";
 
 //Styles
 import styles from "./Header.module.scss";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -9,9 +10,15 @@ const Header = () => {
       <h1>Auction Forge</h1>
       <nav>
         <ul className={styles.menu}>
-          <li>Home</li>
-          <li>Template shop</li>
-          <li>Create listing</li>
+          <Link href="/" passHref>
+            <li>Home</li>
+          </Link>
+          <Link href="/shop" passHref>
+            <li>Template shop</li>
+          </Link>
+          <Link href="/creator" passHref>
+            <li>Create listing</li>
+          </Link>
         </ul>
       </nav>
     </header>
