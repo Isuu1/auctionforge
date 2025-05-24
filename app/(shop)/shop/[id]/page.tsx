@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Single template page</div>;
+  return <div className="page">Single template page</div>;
 }
