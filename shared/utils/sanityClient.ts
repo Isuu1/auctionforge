@@ -3,10 +3,10 @@ import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
 export const client = createClient({
-  projectId: "YOUR_SANITY_PROJECT_ID", // Replace with your actual Sanity Project ID
-  dataset: "production", // Or your dataset name
-  apiVersion: "2023-10-05", // Or the API version you're using
-  useCdn: process.env.NODE_ENV === "production", // Enable CDN in production
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2023-10-05",
+  useCdn: process.env.NODE_ENV === "production",
 });
 
 const builder = imageUrlBuilder(client);
