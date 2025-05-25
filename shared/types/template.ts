@@ -5,5 +5,5 @@ export type Template = {
   createdAt: string;
   updatedAt: string;
   content: string;
-  imageUrl?: string;
+  image: string | null;
 };
