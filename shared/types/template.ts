@@ -6,4 +6,7 @@ export type Template = {
   updatedAt: string;
   content: string;
   image: string | null;
+  slug: {
+    current: string;
+  };
 };

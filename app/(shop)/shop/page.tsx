@@ -3,6 +3,7 @@ import Button from "@/shared/components/ui/Button";
 import { Template } from "@/shared/types/template";
 import { urlFor } from "@/shared/utils/sanityClient";
 import Image from "next/image";
+import Link from "next/link";
 //Icons
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -33,7 +34,9 @@ export default async function Page() {
               <h2 className="text-lg font-bold">{template.name}</h2>
               <p>{template.description}</p>
               <div className="flex gap-2">
-                <Button text="View Template" variant="primary" size="small" />
+                <Link href={`/shop/${template.slug.current}`}>
+                  <Button text="View Template" variant="primary" size="small" />
+                </Link>
                 <Button text="Buy now" variant="secondary" size="small" />
               </div>
             </div>
