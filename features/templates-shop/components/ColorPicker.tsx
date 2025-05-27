@@ -45,7 +45,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ template }) => {
             color.label === "Primary" && (
               <div
                 key={index}
-                className={`cursor-pointer w-9 h-9 flex flex-col items-center gap-2 border-2 rounded-lg ${activeColorPalette?._id === palette._id ? "border-blue-500" : "border-transparent"}`}
+                className={`transition-all cursor-pointer w-9 h-9 flex flex-col items-center gap-2 border-3 rounded-lg ${activeColorPalette?._id === palette._id ? "border-yellow-500" : "border-transparent"}`}
                 onClick={() => setActiveColorPalette(palette)}
                 style={{ backgroundColor: color.value.hex }}
               ></div>
