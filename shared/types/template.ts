@@ -11,6 +11,11 @@ export type Template = {
       code: string;
     },
   ];
+  availableColorPalettes: [
+    {
+      _ref: string;
+    },
+  ];
   description: string;
   createdAt: string;
   updatedAt: string;
