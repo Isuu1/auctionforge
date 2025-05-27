@@ -1,10 +1,10 @@
 //Icons
-import BackLink from "@/shared/components/BackLink";
-import { Template } from "@/shared/types/template";
 import { FaArrowLeft } from "react-icons/fa";
-import parse from "html-react-parser";
-//import { ColorPalette } from "@/shared/types/colorPalette";
-import ColorPicker from "@/features/templates-shop/components/ColorPicker";
+//Components
+import BackLink from "@/shared/components/BackLink";
+import TemplateView from "@/features/templates-shop/components/TemplateView";
+//Types
+import { Template } from "@/shared/types/template";
 
 // export async function generateStaticParams() {
 //   const result = await fetch("http://localhost:5245/api/templates").then(
@@ -30,28 +30,17 @@ export default async function Page({
   const template: Template = data.result[0];
 
   //Get color palettes
-  // const colorPalettesResponse = await fetch(
-  //   `http://localhost:5245/api/colorpalette`
-  // );
-  // const colorPalettesData = await colorPalettesResponse.json();
-  // const colorPalettes = colorPalettesData.result;
-  // console.log(colorPalettes);
-  // console.log(template);
-
-  // const associatedColorPalette = colorPalettes.filter((palette: ColorPalette) =>
-  //   template.availableColorPalettes.some(
-  //     (refPalette) => refPalette._ref === palette._id
-  //   )
-  // );
-  // console.log("Template associated color palette:", associatedColorPalette);
+  const colorPalettesResponse = await fetch(
+    `http://localhost:5245/api/colorpalette`
+  );
+  const colorPalettesData = await colorPalettesResponse.json();
+  const colorPalettes = colorPalettesData.result;
 
   return (
     <div className="page">
       <BackLink text="Template" icon={<FaArrowLeft />} />
-      <ColorPicker template={template} />
-      {template.html && (
-        <div>{parse(template.html[0].code + template.css[0].code)}</div>
-      )}
+
+      <TemplateView template={template} colorPalettes={colorPalettes} />
     </div>
   );
 }

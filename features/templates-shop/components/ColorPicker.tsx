@@ -2,33 +2,21 @@
 
 import { ColorPalette } from "@/shared/types/colorPalette";
 import { Template } from "@/shared/types/template";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 interface ColorPickerProps {
   template: Template;
+  colorPalettes: ColorPalette[];
+  activeColorPalette: ColorPalette | null;
+  setActiveColorPalette: (palette: ColorPalette | null) => void;
 }
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ template }) => {
-  const [colorPalettes, setColorPalettes] = useState<ColorPalette[]>([]);
-  const [activeColorPalette, setActiveColorPalette] =
-    useState<ColorPalette | null>(null);
-
-  useEffect(() => {
-    if (colorPalettes.length > 0) {
-      setActiveColorPalette(colorPalettes[0]);
-    }
-  }, [colorPalettes]);
-
-  useEffect(() => {
-    const fetchColorPalettes = async () => {
-      const response = await fetch("http://localhost:5245/api/colorpalette");
-      const data = await response.json();
-      setColorPalettes(data.result);
-      return data.result;
-    };
-    fetchColorPalettes();
-  }, []);
-
+const ColorPicker: React.FC<ColorPickerProps> = ({
+  template,
+  colorPalettes,
+  activeColorPalette,
+  setActiveColorPalette,
+}) => {
   const associatedColorPalettes = colorPalettes.filter(
     (palette: ColorPalette) =>
       template.availableColorPalettes.some(
