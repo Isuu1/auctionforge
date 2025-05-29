@@ -1,10 +1,12 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
+import parse from "html-react-parser";
+//Types
 import { ColorPalette } from "@/shared/types/colorPalette";
 import { Template } from "@/shared/types/template";
-import React, { useEffect, useState } from "react";
+//Components
 import ColorPicker from "./ColorPicker";
-import parse from "html-react-parser";
 
 interface TemplateViewProps {
   template: Template;
@@ -23,13 +25,6 @@ const TemplateView: React.FC<TemplateViewProps> = ({
   useEffect(() => {
     setTemplateCode(template.css[0].code + template.html[0].code);
   }, []);
-
-  //   const replaceSecondaryColor = (html: string, color: string): string => {
-  //     return html.replace(
-  //       /--secondary-color:\s*#[a-fA-F0-9]{6}/g,
-  //       `--secondary-color: ${color}`
-  //     );
-  //   };
 
   interface ReplaceColorPaletteColors {
     primary: string;
