@@ -24,4 +24,5 @@ export type Template = {
   slug: {
     current: string;
   };
+  price: number;
 };

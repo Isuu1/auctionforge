@@ -90,7 +90,11 @@ const TemplateView: React.FC<TemplateViewProps> = ({
           activeColorPalette={activeColorPalette}
           setActiveColorPalette={setActiveColorPalette}
         />
-        <Button text="Buy now" variant="primary" size="small" />
+        <Button
+          text={`Buy now | £${template.price}`}
+          variant="primary"
+          size="small"
+        />
       </div>
 
       {<div>{parse(templateCode)}</div>}
