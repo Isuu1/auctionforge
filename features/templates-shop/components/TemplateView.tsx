@@ -7,6 +7,7 @@ import { ColorPalette } from "@/shared/types/colorPalette";
 import { Template } from "@/shared/types/template";
 //Components
 import ColorPicker from "./ColorPicker";
+import Button from "@/shared/components/ui/Button";
 
 interface TemplateViewProps {
   template: Template;
@@ -82,12 +83,16 @@ const TemplateView: React.FC<TemplateViewProps> = ({
 
   return (
     <div className="flex flex-col gap-4">
-      <ColorPicker
-        template={template}
-        colorPalettes={colorPalettes}
-        activeColorPalette={activeColorPalette}
-        setActiveColorPalette={setActiveColorPalette}
-      />
+      <div className="flex flex-row items-center justify-between">
+        <ColorPicker
+          template={template}
+          colorPalettes={colorPalettes}
+          activeColorPalette={activeColorPalette}
+          setActiveColorPalette={setActiveColorPalette}
+        />
+        <Button text="Buy now" variant="primary" size="small" />
+      </div>
+
       {<div>{parse(templateCode)}</div>}
     </div>
   );
