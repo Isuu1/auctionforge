@@ -24,6 +24,12 @@ const TemplateView: React.FC<TemplateViewProps> = ({
   const [templateCode, setTemplateCode] = useState<string>("");
 
   useEffect(() => {
+    if (colorPalettes.length > 0) {
+      setActiveColorPalette(colorPalettes[0]);
+    }
+  }, [colorPalettes]);
+
+  useEffect(() => {
     setTemplateCode(template.css[0].code + template.html[0].code);
   }, []);
 
@@ -74,12 +80,6 @@ const TemplateView: React.FC<TemplateViewProps> = ({
       }
     }
   }, [activeColorPalette, templateCode, template.html, template.css]);
-
-  useEffect(() => {
-    if (colorPalettes.length > 0) {
-      setActiveColorPalette(colorPalettes[0]);
-    }
-  }, [colorPalettes]);
 
   return (
     <div className="flex flex-col gap-4">
