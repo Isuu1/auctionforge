@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import parse from "html-react-parser";
 //Types
 import { ColorPalette } from "@/shared/types/colorPalette";
@@ -14,6 +14,11 @@ interface TemplateViewProps {
   colorPalettes: ColorPalette[];
 }
 
+interface ReplaceColorPaletteColors {
+  primary: string;
+  secondary: string;
+}
+
 const TemplateView: React.FC<TemplateViewProps> = ({
   template,
   colorPalettes,
@@ -21,22 +26,32 @@ const TemplateView: React.FC<TemplateViewProps> = ({
   const [activeColorPalette, setActiveColorPalette] =
     useState<ColorPalette | null>(null);
 
-  const [templateCode, setTemplateCode] = useState<string>("");
+  const templateCode = useMemo(() => {
+    const baseCode = template.css[0].code + template.html[0].code;
+
+    if (!activeColorPalette) {
+      return baseCode;
+    }
+    const primaryColor = activeColorPalette.colors.find(
+      (color) => color.label === "Primary"
+    )?.value.hex;
+    const secondaryColor = activeColorPalette.colors.find(
+      (color) => color.label === "Secondary"
+    )?.value.hex;
+    if (!primaryColor) {
+      return baseCode;
+    }
+    return replaceColorPalette(baseCode, {
+      primary: primaryColor,
+      secondary: secondaryColor || "#000000", // Fallback to black if no secondary color is found
+    });
+  }, [activeColorPalette, template.css, template.html]);
 
   useEffect(() => {
     if (colorPalettes.length > 0) {
       setActiveColorPalette(colorPalettes[0]);
     }
   }, [colorPalettes]);
-
-  useEffect(() => {
-    setTemplateCode(template.css[0].code + template.html[0].code);
-  }, []);
-
-  interface ReplaceColorPaletteColors {
-    primary: string;
-    secondary: string;
-  }
 
   const replaceColorPalette = (
     html: string,
@@ -54,32 +69,6 @@ const TemplateView: React.FC<TemplateViewProps> = ({
   };
 
   console.log("Active Color Palette:", activeColorPalette);
-
-  useEffect(() => {
-    if (activeColorPalette && template.html) {
-      const primaryColor = activeColorPalette.colors.find(
-        (color) => color.label === "Primary"
-      )?.value.hex;
-
-      const secondaryColor = activeColorPalette.colors.find(
-        (color) => color.label === "Secondary"
-      )?.value.hex;
-
-      console.log("Primary Color:", primaryColor);
-      console.log("Secondary Color:", secondaryColor);
-
-      if (primaryColor) {
-        const updatedHtml = replaceColorPalette(
-          template.css[0].code + template.html[0].code,
-          {
-            primary: primaryColor,
-            secondary: secondaryColor || "#000000", // Fallback to black if no secondary color is found
-          }
-        );
-        setTemplateCode(updatedHtml);
-      }
-    }
-  }, [activeColorPalette, templateCode, template.html, template.css]);
 
   return (
     <div className="flex flex-col gap-4">
